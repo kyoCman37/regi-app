@@ -10,20 +10,18 @@ def to_int(value):
         return 0
     return int(value)
 
+# ログインチェック（True / False を返す）
 def auth_check(request):
-    if not request.session.get("auth"):
-        return redirect("/")
-    return None
-
+    return request.session.get("auth", False)
 
 
 # ----------------------
-# START
+# START（ログイン）
 # ----------------------
 
 def start(request):
     if request.method == "POST":
-        if request.POST.get("code") == settings.REGISTER_CODE:
+        if request.POST.get("code") == settings.LOGIN_CODE:
             request.session["auth"] = True
             return redirect("/regi1/")
     return render(request, "register/start.html")
@@ -45,6 +43,7 @@ def regi1_result(request):
         return redirect("/")
 
     y = lambda k: to_int(request.POST.get(k))
+
     yen10000 = y("yen10000")
     yen5000  = y("yen5000")
     yen1000  = y("yen1000")
@@ -74,7 +73,8 @@ def regi1_result(request):
         "yen1": yen1,
     }
 
-    return render(request, "register/regi1_result.html", {"total": total})
+    return render(request, "register/regi1_result.html",
+                  {"total": total})
 
 
 # ----------------------
@@ -93,6 +93,7 @@ def regi2_result(request):
         return redirect("/")
 
     y = lambda k: to_int(request.POST.get(k))
+
     yen10000 = y("yen10000")
     yen5000  = y("yen5000")
     yen1000  = y("yen1000")
@@ -122,7 +123,8 @@ def regi2_result(request):
         "yen1": yen1,
     }
 
-    return render(request, "register/regi2_result.html", {"total": total})
+    return render(request, "register/regi2_result.html",
+                  {"total": total})
 
 
 # ----------------------
@@ -135,6 +137,7 @@ def cash_total(request):
 
     regi1 = request.session.get("regi1_total", 0)
     regi2 = request.session.get("regi2_total", 0)
+
     total_cash = regi1 + regi2
     request.session["total_cash"] = total_cash
 
