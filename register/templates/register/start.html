@@ -8,13 +8,19 @@
 <title>レジ金計算アプリ</title>
 </head>
 
+
 <body>
 
 <div class="container">
 
+
 <h1>レジ金計算アプリ</h1>
 
-<a href="/regi1/" class="btn">スタート</a>
+<form method="post">
+{% csrf_token %}
+<input type="password" name="code" class="input" placeholder="パスコード">
+<button type="submit" class="btn">ログイン</button>
+</form>
 
 </div>
 
