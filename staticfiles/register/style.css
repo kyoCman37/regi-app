@@ -1,0 +1,82 @@
+/* ===== 全体 ===== */
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f2f2f2;
+}
+
+.container {
+  max-width: 480px;
+  margin: auto;
+  padding: 16px;
+  background: #ffffff;
+  min-height: 100vh;
+}
+
+/* ===== 見出し ===== */
+
+h1, h2, h3 {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+/* ===== 入力欄 ===== */
+
+.input {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  margin-bottom: 12px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+/* ===== ボタン ===== */
+
+.btn {
+  width: 100%;
+  padding: 14px;
+  margin-top: 8px;
+  font-size: 16px;
+  background: #1976d2;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  box-sizing: border-box;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+.gray {
+  background: #9e9e9e;
+}
+
+/* ===== リンク ===== */
+
+a {
+  text-decoration: none;
+}
+
+/* ===== ラベル ===== */
+
+label {
+  display: block;
+  margin-top: 8px;
+  font-weight: bold;
+}
+
+/* ===== PC用微調整 ===== */
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 600px;
+  }
+}
