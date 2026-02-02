@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="{% static 'register/style.css' %}">
+<title>レジ1 金種入力</title>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>レジ1 金種入力</h2>
+
+<form method="post" action="/regi1/result/">
+{% csrf_token %}
+
+<label>10000円</label>
+<input type="number" name="yen10000" value="{{ yen10000|default:0 }}" class="input">
+
+<label>5000円</label>
+<input type="number" name="yen5000" value="{{ yen5000|default:0 }}" class="input">
+
+<label>1000円</label>
+<input type="number" name="yen1000" value="{{ yen1000|default:0 }}" class="input">
+
+<label>500円</label>
+<input type="number" name="yen500" value="{{ yen500|default:0 }}" class="input">
+
+<label>100円</label>
+<input type="number" name="yen100" value="{{ yen100|default:0 }}" class="input">
+
+<label>50円</label>
+<input type="number" name="yen50" value="{{ yen50|default:0 }}" class="input">
+
+<label>10円</label>
+<input type="number" name="yen10" value="{{ yen10|default:0 }}" class="input">
+
+<label>5円</label>
+<input type="number" name="yen5" value="{{ yen5|default:0 }}" class="input">
+
+<label>1円</label>
+<input type="number" name="yen1" value="{{ yen1|default:0 }}" class="input">
+
+<button type="submit" class="btn">計算</button>
+
+</form>
+
+</div>
+
+</body>
+</html>

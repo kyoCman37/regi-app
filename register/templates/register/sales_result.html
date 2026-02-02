@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="{% static 'register/style.css' %}">
+<title>売上合計</title>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>税込み取引高 合計</h2>
+
+<p>① {{ s1 }} 円</p>
+<p>② {{ s2 }} 円</p>
+
+<hr>
+
+<p><strong>合計：{{ taxed_sales }} 円</strong></p>
+
+<a href="/miss/" class="btn">次へ</a>
+<a href="/sales/" class="btn gray">戻る</a>
+
+</div>
+
+</body>
+</html>

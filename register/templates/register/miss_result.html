@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="{% static 'register/style.css' %}">
+<title>売上計算結果</title>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>売上計算結果</h2>
+
+<p>ミスレ合計：{{ miss_total }} 円</p>
+<p>税込み取引高：{{ taxed_sales }} 円</p>
+
+<hr>
+
+<p><strong>税込み純売上高：{{ final_taxed_sales }} 円</strong></p>
+
+
+<a href="/gift/" class="btn">次へ</a>
+<a href="/miss/" class="btn gray">戻る</a>
+
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="{% static 'register/style.css' %}">
+<title>ミスレシート入力</title>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>ミスレシート入力</h2>
+
+<form method="post" action="/miss/result/">
+{% csrf_token %}
+
+<div id="miss-area">
+  <input type="number" class="input" name="miss[]" value="0">
+</div>
+
+<button type="button" class="btn" onclick="addMiss()">＋追加</button>
+
+<button type="submit" class="btn">計算</button>
+
+</form>
+
+<a href="/sales/" class="btn gray">戻る</a>
+
+</div>
+
+<script>
+function addMiss(){
+  const area = document.getElementById("miss-area");
+  const input = document.createElement("input");
+  input.type = "number";
+  input.name = "miss[]";
+  input.className = "input";
+  input.value = 0;
+  area.appendChild(input);
+}
+</script>
+
+</body>
+</html>

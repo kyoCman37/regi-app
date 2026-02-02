@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="{% static 'register/style.css' %}">
+<title>最終結果</title>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>最終結果</h2>
+
+<p>税込み純売上高：{{ final_taxed_sales }} 円</p>
+<p>レジ残高：{{ final_register }} 円</p>
+
+<hr>
+
+<h3>過不足金額</h3>
+
+{% if difference > 0 %}
+  <p><strong>+{{ difference }} 円</strong></p>
+{% elif difference < 0 %}
+  <p><strong>{{ difference }} 円</strong></p>
+{% else %}
+  <p><strong>±0 円</strong></p>
+{% endif %}
+
+
+<a href="/summary/" class="btn gray">戻る</a>
+<a href="/" class="btn">最初に戻る</a>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="{% static 'register/style.css' %}">
+<title>レジ2 合計</title>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>レジ2 合計</h2>
+
+<p><strong>{{ total }} 円</strong></p>
+
+<a href="/regi2/" class="btn gray">戻る</a>
+<a href="/cash_total/" class="btn">次へ</a>
+
+</div>
+
+</body>
+</html>

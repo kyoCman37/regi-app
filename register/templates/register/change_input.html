@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="{% static 'register/style.css' %}">
+<title>釣銭入力</title>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>釣銭金額</h2>
+
+<form method="post">
+{% csrf_token %}
+
+<input type="number" name="change" class="input" value="{{ change }}">
+
+<button type="submit" class="btn">計算</button>
+
+</form>
+
+<a href="/md/" class="btn gray">戻る</a>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="{% static 'register/style.css' %}">
+<title>クレジット・電子マネー</title>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>クレジット・電子マネー</h2>
+
+<form method="post" action="/credit/result/">
+{% csrf_token %}
+
+<div id="credit-area">
+  <input type="number" name="credit[]" class="input" value="0">
+</div>
+
+<button type="button" class="btn" onclick="addCredit()">＋追加</button>
+
+<button type="submit" class="btn">次へ</button>
+
+</form>
+
+<a href="/shareholder/" class="btn gray">戻る</a>
+
+</div>
+
+<script>
+function addCredit(){
+  const area = document.getElementById("credit-area");
+  const input = document.createElement("input");
+  input.type = "number";
+  input.name = "credit[]";
+  input.className = "input";
+  input.value = 0;
+  area.appendChild(input);
+}
+</script>
+
+</body>
+</html>

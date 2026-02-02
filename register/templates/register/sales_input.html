@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="{% static 'register/style.css' %}">
+<title>税込み取引高</title>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>税込み取引高 入力</h2>
+
+<form method="post" action="/sales/result/">
+{% csrf_token %}
+
+<label>取引高①</label>
+<input type="number" name="taxed_sales1" value="{{ s1 }}" class="input">
+
+<label>取引高②</label>
+<input type="number" name="taxed_sales2" value="{{ s2 }}" class="input">
+
+<button type="submit" class="btn">計算</button>
+
+</form>
+
+<a href="/cash_total/" class="btn gray">戻る</a>
+
+</div>
+
+</body>
+</html>
+

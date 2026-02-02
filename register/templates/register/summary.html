@@ -1,0 +1,49 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="{% static 'register/style.css' %}">
+<title>入力内容サマリー</title>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>入力内容サマリー</h2>
+
+<h3>■ 現金</h3>
+<a href="/regi1/">レジ1</a>：{{ regi1_total }} 円<br>
+<a href="/regi2/">レジ2</a>：{{ regi2_total }} 円<br>
+<p>合算：{{ total_cash }} 円</p>
+
+<hr>
+
+<h3>■ 売上</h3>
+<a href="/sales/">税込み取引高</a>：{{ taxed_sales }} 円<br>
+<a href="/miss/">ミスレ合計</a>：{{ miss_total }} 円<br>
+<p><strong>税込み純売上高：{{ final_taxed_sales }} 円</strong></p>
+
+<hr>
+
+<h3>■ 内訳</h3>
+<a href="/gift/">商品券</a>：{{ gift }} 円<br>
+<a href="/shareholder/">株主優待</a>：{{ shareholder }} 円<br>
+<a href="/credit/">クレジット電子マネー</a>：{{ credit_emoney }} 円<br>
+<a href="/md/">MDカードチャージ</a>：{{ md_charge }} 円<br>
+
+<hr>
+
+<h3>■ 釣銭</h3>
+<a href="/change/">{{ change_money }} 円</a>
+
+<hr>
+
+<a href="/final/" class="btn">最終結果へ</a>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="{% static 'register/style.css' %}">
+<title>MDカードチャージ</title>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>MDカードチャージ金額</h2>
+
+<form method="post">
+{% csrf_token %}
+
+<input type="number" name="md" class="input" value="{{ md }}">
+
+<button type="submit" class="btn">次へ</button>
+
+</form>
+
+<a href="/credit/" class="btn gray">戻る</a>
+
+</div>
+
+</body>
+</html>

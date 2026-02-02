@@ -1,0 +1,4 @@
+final_taxed_sales = taxed_sales - miss_register
+final_total_cash = total_cash = change_money
+final_register =final_total_cash + gift + shareholder + credit_emoney - md_charge
+過不足 = final_taxed_sales - final_register

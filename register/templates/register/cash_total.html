@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="{% static 'register/style.css' %}">
+<title>現金合算</title>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>現金合算結果</h2>
+
+<p>レジ1：{{ regi1 }} 円</p>
+<p>レジ2：{{ regi2 }} 円</p>
+
+<hr>
+
+<p><strong>合計：{{ total_cash }} 円</strong></p>
+
+
+<a href="/sales/" class="btn">次へ</a>
+<a href="/regi2/" class="btn gray">戻る</a>
+
+
+</div>
+
+</body>
+</html>

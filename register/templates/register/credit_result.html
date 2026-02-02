@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="{% static 'register/style.css' %}">
+<title>クレジット合計</title>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>クレジット・電子マネー 合計</h2>
+
+<p><strong>{{ credit_total }} 円</strong></p>
+
+<a href="/md/" class="btn">次へ</a>
+<a href="/credit/" class="btn gray">戻る</a>
+
+</div>
+
+</body>
+</html>
