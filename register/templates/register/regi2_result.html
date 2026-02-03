@@ -14,6 +14,17 @@
 
 <h2>レジ2 合計</h2>
 
+<ul>
+{% for d in denoms %}
+  {% if d.count > 0 %}
+    <li>{{ d.label }} × {{ d.count }}枚 = {{ d.amount }} 円</li>
+  {% endif %}
+{% endfor %}
+</ul>
+
+
+<hr>
+
 <p><strong>{{ total }} 円</strong></p>
 
 

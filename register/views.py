@@ -42,39 +42,48 @@ def regi1_result(request):
     if not auth_check(request):
         return redirect("/")
 
-    y = lambda k: to_int(request.POST.get(k))
+    # 金種テーブル（1箇所で管理）
+    bills_coins = [
+        ("10000円", "yen10000", 10000),
+        ("5000円",  "yen5000",   5000),
+        ("1000円",  "yen1000",   1000),
+        ("500円",   "yen500",     500),
+        ("100円",   "yen100",     100),
+        ("50円",    "yen50",       50),
+        ("10円",    "yen10",       10),
+        ("5円",     "yen5",         5),
+        ("1円",     "yen1",         1),
+    ]
 
-    yen10000 = y("yen10000")
-    yen5000  = y("yen5000")
-    yen1000  = y("yen1000")
-    yen500   = y("yen500")
-    yen100   = y("yen100")
-    yen50    = y("yen50")
-    yen10    = y("yen10")
-    yen5     = y("yen5")
-    yen1     = y("yen1")
+    # 入力値（枚数）を安全にint化して集める
+    detail = {}
+    for _, key, _ in bills_coins:
+        detail[key] = to_int(request.POST.get(key))
 
-    total = (
-        10000*yen10000 + 5000*yen5000 + 1000*yen1000 +
-        500*yen500 + 100*yen100 + 50*yen50 +
-        10*yen10 + 5*yen5 + yen1
-    )
+    # 金種別の金額（例：500円×3枚=1500円）を作る
+    denoms = []
+    for label, key, unit in bills_coins:
+        count = detail[key]
+        amount = unit * count
+        denoms.append({
+            "label": label,
+            "count": count,
+            "unit": unit,
+            "amount": amount,
+        })
 
+    total = sum(d["amount"] for d in denoms)
+
+    # セッション保存（保持用）
     request.session["regi1_total"] = total
-    request.session["regi1_detail"] = {
-        "yen10000": yen10000,
-        "yen5000": yen5000,
-        "yen1000": yen1000,
-        "yen500": yen500,
-        "yen100": yen100,
-        "yen50": yen50,
-        "yen10": yen10,
-        "yen5": yen5,
-        "yen1": yen1,
-    }
+    request.session["regi1_detail"] = detail
+    request.session["regi1_denoms"] = denoms  # ←（任意）あとで一覧表示に使える
 
-    return render(request, "register/regi1_result.html",
-                  {"total": total})
+    return render(request, "register/regi1_result.html", {
+        "total": total,
+        "denoms": denoms,  # ← テンプレで一覧表示できる
+    })
+
 
 
 # ----------------------
@@ -92,39 +101,48 @@ def regi2_result(request):
     if not auth_check(request):
         return redirect("/")
 
-    y = lambda k: to_int(request.POST.get(k))
+    # 金種テーブル（1箇所で管理）
+    bills_coins = [
+        ("10000円", "yen10000", 10000),
+        ("5000円",  "yen5000",   5000),
+        ("1000円",  "yen1000",   1000),
+        ("500円",   "yen500",     500),
+        ("100円",   "yen100",     100),
+        ("50円",    "yen50",       50),
+        ("10円",    "yen10",       10),
+        ("5円",     "yen5",         5),
+        ("1円",     "yen1",         1),
+    ]
 
-    yen10000 = y("yen10000")
-    yen5000  = y("yen5000")
-    yen1000  = y("yen1000")
-    yen500   = y("yen500")
-    yen100   = y("yen100")
-    yen50    = y("yen50")
-    yen10    = y("yen10")
-    yen5     = y("yen5")
-    yen1     = y("yen1")
+    # 入力値（枚数）を安全にint化して集める
+    detail = {}
+    for _, key, _ in bills_coins:
+        detail[key] = to_int(request.POST.get(key))
 
-    total = (
-        10000*yen10000 + 5000*yen5000 + 1000*yen1000 +
-        500*yen500 + 100*yen100 + 50*yen50 +
-        10*yen10 + 5*yen5 + yen1
-    )
+    # 金種別の金額（例：500円×3枚=1500円）を作る
+    denoms = []
+    for label, key, unit in bills_coins:
+        count = detail[key]
+        amount = unit * count
+        denoms.append({
+            "label": label,
+            "count": count,
+            "unit": unit,
+            "amount": amount,
+        })
 
+    total = sum(d["amount"] for d in denoms)
+
+    # セッション保存（保持用）
     request.session["regi2_total"] = total
-    request.session["regi2_detail"] = {
-        "yen10000": yen10000,
-        "yen5000": yen5000,
-        "yen1000": yen1000,
-        "yen500": yen500,
-        "yen100": yen100,
-        "yen50": yen50,
-        "yen10": yen10,
-        "yen5": yen5,
-        "yen1": yen1,
-    }
+    request.session["regi2_detail"] = detail
+    request.session["regi2_denoms"] = denoms  # ←（任意）あとで一覧表示に使える
 
-    return render(request, "register/regi2_result.html",
-                  {"total": total})
+    return render(request, "register/regi2_result.html", {
+        "total": total,
+        "denoms": denoms,  # ← テンプレで一覧表示できる
+    })
+
 
 
 # ----------------------
