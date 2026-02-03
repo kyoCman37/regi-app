@@ -311,7 +311,7 @@ def final_result(request):
 
     final_total_cash = total_cash - change_money
     final_register = final_total_cash + gift + shareholder + credit - md
-    difference = final_taxed_sales - final_register
+    difference = final_register - final_taxed_sales
 
     return render(request, "register/final.html", {
         "final_taxed_sales": final_taxed_sales,
