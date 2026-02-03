@@ -26,7 +26,15 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ["*"]
+
+from dotenv import load_dotenv
+load_dotenv()
+
+
+ALLOWED_HOSTS = os.environ.get(
+    "ALLOWED_HOST",
+    "127.0.0.1,localhost"
+).split(",")
 
 
 # Application definition
@@ -106,9 +114,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/6.0/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ja'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Tokyo'
 
 USE_I18N = True
 
@@ -121,4 +129,4 @@ USE_TZ = True
 STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
-LOGIN_CODE = '1234'
+LOGIN_CODE = os.environ.get("LOGIN_CODE")
